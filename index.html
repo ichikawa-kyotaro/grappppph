@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>등급 그래프</title>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<style>
+			* {box-sizing: border-box;}body{display: flex;height: 100vh}
+			.inputs {flex: 0 0 400px;padding: 10px;background-color: #f2f2f2;display: flex;justify-content: flex-start;align-items: flex-start;}
+			.input-field {display: flex;align-items: flex-start;}label,
+			input[type="text"] {margin-right: 10px;padding: 5px;}
+			input[type="text"] {width: 80px;border-radius: 5px;border: none;}
+			.add-button {padding: 5px 10px;background-color: #1c6dd6;color: #fff;border: none;border-radius: 5px;cursor: pointer;}
+			.chart-container {flex: 1;display: flex;justify-content: center;align-items: center;}
+		</style>
+	</head>
+	<body>
+		<div class="inputs">
+			<button class="add-button">더하기</button>
+			<div class="input-fields">
+				<div class="input-field">
+					<label>날짜:</label>
+					<input type="text" class="x-value">
+					<label>등급:</label>
+					<input type="text" class="y-value">
+				</div>
+			</div>
+		</div>
+		<div class="chart-container">
+			<canvas id="myChart"></canvas>
+		</div>
+		<script src="example.js"></script>
+		<script>
+		   // 입력 필드에 이벤트 리스너를 등록하여 값이 변경될 때마다 차트를 업데이트
+		   inputFields.addEventListener('input', updateChart);
+		   // 추가 버튼에 클릭 이벤트 리스너를 등록하여 새로운 입력 필드를 생성
+		   addButton.addEventListener('click', () => {
+			   // 새로운 입력 필드를 생성하고 inputFields에 추가
+			   const inputField = document.createElement('div');
+			   inputField.classList.add('input-field');
+			   inputField.innerHTML = '<label>날짜:</label><input type="text" class="x-value"> <label>등급:</label><input type="text" class="y-value">';
+			   inputFields.appendChild(inputField);
+			  
+			  // 새로 생성된 입력 필드의 x값과 y값에 대한 이벤트 리스너를 등록
+			   const xValue = inputField.querySelector('.x-value'),
+			   yValue = inputField.querySelector('.y-value');
+			   xValue.addEventListener('input', updateChart);
+			   yValue.addEventListener('input', updateChart);
+		   });
+		</script>
+	</body>
+</html>
+
